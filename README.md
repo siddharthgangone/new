@@ -1,30 +1,44 @@
-
-		JavascriptExecutor jsec = (JavascriptExecutor)driver;
-		jsec.executeScript("scroll(0, 250);");
-		List<WebElement> Objlist = driver.findElements(By.xpath("//*[@class='grid-calendar']/div//*[@class='row calendar-week']"));
-        
-		System.out.println("Rows are extratcted as --- "+ Objlist.size());
+@Test(priority=12)
+	public void Enterdateofbirth() throws InterruptedException {
+		
+			
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+		
+			 
+			
+			
+			WebElement dateofbirth=driver.findElement(By.
+					 xpath("//input[@class='k-input' and @role= 'spinbutton']"));	
+			 
+			String value="02/05/1987";
+			//js.executeScript("document.getElementByXpath('//input[@class='k-input' and @role= 'spinbutton']').setAttribute('value', '02/05/1987')", dateofbirth);
+				
+		js.executeScript("arguments[0].value='"+value+"'",dateofbirth);
+		Thread.sleep(10000);
+		System.out.println(dateofbirth.getAttribute("value"));
+		dateofbirth.click();
+		Thread.sleep(500);
+		//dateofbirth.click();
+		//js.executeScript("arguments[0].click()",dateofbirth);
+		
+		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//*[(text()='11')]")));
+		//System.out.println(val);
+		//dateofbirth.getAttribute("value").
+		//dateofbirth.clear();
+		//dateofbirth.sendKeys(Keys.TAB);
+		//driver.findElement(By.
+				 //xpath("//input[@class='k-input' and @role= 'spinbutton']")).sendKeys("02/05/1987");
+		
+		logger.info("dateofbirth entered");
+		ExtentTest test4 =extent.createTest("Smn Test");
+		test4.pass("enter date of birth");
+		test4.info("dateofbirth entered successfully");
 		
 		
-		for (int intcounter=0;intcounter<Objlist.size()-4;intcounter++ ) {
-			
-			System.out.println("entered the loop " +Objlist.size()    );
-			//List<WebElement> Objlist1 = driver.findElements(By.xpath("//*[@class='grid-calendar']/div//*[@class='row calendar-week']"));
-			List<WebElement> ObCol	=Objlist.get(intcounter).findElements(By.className("showtime"));
-			
-			
-			System.out.println("ObCol are extratcted as --- "+ ObCol.size());
-			for(int intcolcounter=0;intcolcounter<ObCol.size();intcolcounter++)
-			
-			{
-				
-				String Hours=ObCol.get(intcolcounter).getText();
-				
-				System.out.println("we are getting details" +Hours);
-				
-				
-			}
-			
-			
-			
-		}
+		
+		
+		
+		
+		
+	}
+	
